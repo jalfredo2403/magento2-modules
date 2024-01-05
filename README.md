@@ -1,3 +1,3 @@
 # magento2-modules
 
-# Module Controllers all type of controller implements HttpGetActionInterface
+# Module Controllers fixed Magento Controller deprecated action
