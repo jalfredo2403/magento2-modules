@@ -1,0 +1,29 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="orderExportRun" xsi:type="object">Josemage\OrderExport\Console\Command\OrderExport</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Josemage\OrderExport\Action\CollectOrderData">
+        <arguments>
+            <argument name="collectors" xsi:type="array">
+                <item name="order_header_data" xsi:type="object">Josemage\OrderExport\Action\OrderDataCollector\OrderHeaderData</item>
+                <item name="order_item_data" xsi:type="object">Josemage\OrderExport\Action\OrderDataCollector\OrderItemData</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Josemage\OrderExport\Action\GetOrderExportItems">
+        <arguments>
+            <argument name="allowedTypes" xsi:type="array">
+                <item name="simple" xsi:type="const">Magento\Catalog\Model\Product\Type::DEFAULT_TYPE</item>
+                <item name="virtual" xsi:type="const">Magento\Catalog\Model\Product\Type::TYPE_VIRTUAL</item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>
