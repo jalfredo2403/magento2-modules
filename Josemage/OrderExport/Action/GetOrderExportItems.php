@@ -23,7 +23,7 @@ class GetOrderExportItems
 
     /**
      * @param OrderInterface $order
-     * @return array
+     * @return \Magento\Sales\Api\Data\OrderItemInterface[]
      */
     public function execute(OrderInterface $order): array
     {
