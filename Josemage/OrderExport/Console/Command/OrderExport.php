@@ -5,6 +5,7 @@ namespace Josemage\OrderExport\Console\Command;
 
 
 use Josemage\OrderExport\Action\CollectOrderData;
+use Josemage\OrderExport\Action\ExportOrder;
 use Josemage\OrderExport\Model\HeaderData;
 use Josemage\OrderExport\Model\HeaderDataFactory;
 use Symfony\Component\Console\Command\Command;
@@ -28,11 +29,8 @@ class OrderExport extends Command
      * @var HeaderDataFactory
      */
     private HeaderDataFactory $headerDataFactory;
+    private ExportOrder $exportOrder;
 
-    /**
-     * @var CollectOrderData
-     */
-    private CollectOrderData $collectOrderData;
 
     /**
      * @param HeaderDataFactory $headerDataFactory
@@ -40,13 +38,13 @@ class OrderExport extends Command
      */
     public function __construct(
         HeaderDataFactory $headerDataFactory,
-        CollectOrderData $collectOrderData,
+        ExportOrder $exportOrder,
         string            $name = null
     )
     {
         parent::__construct($name);
         $this->headerDataFactory = $headerDataFactory;
-        $this->collectOrderData = $collectOrderData;
+        $this->exportOrder = $exportOrder;
     }
 
     /**
@@ -95,9 +93,19 @@ class OrderExport extends Command
             $headerData->setMerchantNote($notes);
         }
 
-        $orderData = $this->collectOrderData->execute($orderId,$headerData);
+        $result = $this->exportOrder->execute($orderId,$headerData);
+        $success = $result['success'] ?? false;
+        if ($success) {
+            $output->writeln(__('Successfully exported order'));
+        } else {
+            $msg = $result['error'] ?? null;
+            if ($msg === null) {
+                $msg = __('Unexpected errors occurred');
+            }
+            $output->writeln($msg);
+            return 1;
+        }
 
-        $output->writeln(print_r($orderData, true));
         return 0;
     }
 

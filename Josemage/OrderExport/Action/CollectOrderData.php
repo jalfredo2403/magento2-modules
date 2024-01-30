@@ -5,7 +5,7 @@ namespace Josemage\OrderExport\Action;
 
 use Josemage\OrderExport\Api\OrderDataCollectorInterface;
 use Josemage\OrderExport\Model\HeaderData;
-use Magento\Sales\Api\OrderRepositoryInterface;
+use Magento\Sales\Api\Data\OrderInterface;
 
 /**
  *
@@ -13,33 +13,28 @@ use Magento\Sales\Api\OrderRepositoryInterface;
 class CollectOrderData
 {
 
-    /**
-     * @var OrderRepositoryInterface
-     */
-    private OrderRepositoryInterface $orderRepository;
     /** @var OrderDataCollectorInterface[] */
     private array $collectors;
 
+
     /**
-     * @param OrderRepositoryInterface $orderRepository
+     * @param array $collectors
      */
     public function __construct(
-        OrderRepositoryInterface $orderRepository,
-        array                    $collectors = []
+        array $collectors = []
     )
     {
-        $this->orderRepository = $orderRepository;
         $this->collectors = $collectors;
     }
 
+
     /**
-     * @param int $orderID
+     * @param OrderInterface $order
      * @param HeaderData $headerData
      * @return array
      */
-    public function execute(int $orderId, HeaderData $headerData): array
+    public function execute(OrderInterface $order, HeaderData $headerData): array
     {
-        $order = $this->orderRepository->get($orderId);
         $output = [];
 
         foreach ($this->collectors as $collector) {
