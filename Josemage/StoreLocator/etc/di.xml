@@ -1,0 +1,26 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="orderExportRun" xsi:type="object">Josemage\StoreLocator\Console\Command\StoreLocator</item>
+                <item name="orderExportDelete" xsi:type="object">Josemage\StoreLocator\Console\Command\StoreLocatorDelete</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Config\Model\Config\TypePool">
+        <arguments>
+            <argument name="sensitive" xsi:type="array">
+                <item name="locator/store_locator/api_key" xsi:type="string">1</item>
+            </argument>
+            <argument name="environment" xsi:type="array">
+                <item name="locator/store_locator/api_key" xsi:type="string">1</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <preference for="Josemage\StoreLocator\Api\Data\StoreLocatorInterface" type="Josemage\StoreLocator\Model\StoreLocator"/>
+    <preference for="Josemage\StoreLocator\Api\StoreLocatorRepositoryInterface" type="Josemage\StoreLocator\Model\StoreLocatorRepository"/>
+
+</config>

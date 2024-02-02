@@ -1,0 +1,36 @@
+<?php
+$locatorId = 5;
+$apiKey = $this->getMapApiKey();
+//TODO Refactoring for add getList to Respository and do it this dynamic for show all the stores locators.
+$locator = $this->loadLocatorById($locatorId);
+if ($apiKey and $locator):
+    ?>
+    <div class="title">
+        <div id="map" style="width:100%;height:400px;"></div>
+    </div>
+
+    <script>
+        require([
+            "https://maps.googleapis.com/maps/api/js?key=<?= $this->escapeUrl($this->getMapApiKey()) ?>"
+        ], function () {
+            var mapLatLng = new google.maps.LatLng(<?= (float)$locator->getLatitude()?>, <?= (float)$locator->getLongitude()?>);
+            var mapOptions = {
+                draggable: <?= 'false'; ?>,
+                zoom: <?= 10 ?>,
+                center: mapLatLng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var googleMap = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+            var marker = new google.maps.Marker({
+                position: mapLatLng,
+                map: googleMap,
+                animation: google.maps.Animation.DROP,
+                title: '<?= $this->escapeJs($locator->getName()) ?>'
+            });
+        });
+    </script>
+<?php else: ?>
+    <div class="block-title"><strong><?= __($this->getError()) ?></strong></div>
+<?php endif ?>

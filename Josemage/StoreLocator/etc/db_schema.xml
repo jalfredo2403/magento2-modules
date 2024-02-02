@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="store_locator_data" resource="default" engine="innodb" comment="Store Locator data">
+        <column xsi:type="int" name="id" unsigned="false" nullable="false" identity="true"
+                comment="ID"/>
+        <column xsi:type="text" name="name" comment="Store name"/>
+        <column xsi:type="text" name="hours" comment="Store hours"/>
+        <column xsi:type="text" name="latitude" comment="Store Latitude"/>
+        <column xsi:type="text" name="longitude" comment="Store Longitude"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

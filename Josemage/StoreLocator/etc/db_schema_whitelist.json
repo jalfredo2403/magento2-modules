@@ -1,0 +1,15 @@
+{
+    "store_locator_data": {
+        "column": {
+            "id": true,
+            "name": true,
+            "hours": true,
+            "latitude": true,
+            "Longitude": true,
+            "longitude": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
