@@ -6,7 +6,8 @@
             "hours": true,
             "latitude": true,
             "Longitude": true,
-            "longitude": true
+            "longitude": true,
+            "status": true
         },
         "constraint": {
             "PRIMARY": true

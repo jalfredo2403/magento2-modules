@@ -1,36 +1,45 @@
 <?php
-$locatorId = 5;
 $apiKey = $this->getMapApiKey();
-//TODO Refactoring for add getList to Respository and do it this dynamic for show all the stores locators.
-$locator = $this->loadLocatorById($locatorId);
-if ($apiKey and $locator):
+$storesLocator = $this->laodStoresLocators();
+if ($apiKey and $storesLocator):
     ?>
     <div class="title">
-        <div id="map" style="width:100%;height:400px;"></div>
+        <div id="map" style="width:100%;height:50vw;"></div>
     </div>
-
     <script>
+        let locations = [];
+        <?php foreach ($storesLocator as $locator):?>
+             locations.push(['<?="<p>".__($locator->getName())."<br> Store Hours:".__($locator->getHours())."</p"?>',<?=(float)$locator->getLatitude()?>,<?= (float)$locator->getLongitude()?>, <?= $locator->getId()?>]);
+        <?php endforeach;?>
         require([
             "https://maps.googleapis.com/maps/api/js?key=<?= $this->escapeUrl($this->getMapApiKey()) ?>"
         ], function () {
-            var mapLatLng = new google.maps.LatLng(<?= (float)$locator->getLatitude()?>, <?= (float)$locator->getLongitude()?>);
-            var mapOptions = {
-                draggable: <?= 'false'; ?>,
-                zoom: <?= 10 ?>,
-                center: mapLatLng,
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 5,
+                center: new google.maps.LatLng(locations[0][1], locations[0][2]),
                 mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-
-            var googleMap = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-            var marker = new google.maps.Marker({
-                position: mapLatLng,
-                map: googleMap,
-                animation: google.maps.Animation.DROP,
-                title: '<?= $this->escapeJs($locator->getName()) ?>'
             });
+
+            var infowindow = new google.maps.InfoWindow();
+
+            var marker, i;
+
+            for (i = 0; i < locations.length; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                    map: map
+                });
+
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        infowindow.setContent(locations[i][0]);
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+            }
         });
     </script>
+
 <?php else: ?>
     <div class="block-title"><strong><?= __($this->getError()) ?></strong></div>
 <?php endif ?>

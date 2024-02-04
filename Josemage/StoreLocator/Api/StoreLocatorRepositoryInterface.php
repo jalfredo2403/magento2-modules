@@ -3,10 +3,15 @@
 namespace Josemage\StoreLocator\Api;
 
 use \Josemage\StoreLocator\Api\Data\StoreLocatorInterface;
+use Josemage\StoreLocator\Api\Data\StoreLocatorSearchResultInterface;
+use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 
+/**
+ *
+ */
 interface StoreLocatorRepositoryInterface
 {
     /**
@@ -36,5 +41,11 @@ interface StoreLocatorRepositoryInterface
      * @throws CouldNotDeleteException
      */
     public function deleteById(int $locatorId): bool;
+
+    /**
+     * @param SearchCriteriaInterface $searchCriteria
+     * @return StoreLocatorSearchResultInterface
+     */
+    public function getList(SearchCriteriaInterface $searchCriteria):StoreLocatorSearchResultInterface;
 
 }

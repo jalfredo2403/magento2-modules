@@ -27,6 +27,11 @@ class LocatorData
     private $latutude;
 
     /**
+     * @var
+     */
+    private $status;
+
+    /**
      * @return string|null
      */
     public function getName(): ?string
@@ -96,6 +101,23 @@ class LocatorData
     public function setLongitude(?string $longitude): LocatorData
     {
         $this->longitude = $longitude;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getStatus():?int{
+      return $this->status;
+    }
+
+    /**
+     * @param int|null $status
+     * @return $this
+     */
+    public function setStatus(?int $status):LocatorData
+    {
+        $this->status = $status;
         return $this;
     }
 

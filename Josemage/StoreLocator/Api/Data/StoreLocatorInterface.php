@@ -34,6 +34,17 @@ interface StoreLocatorInterface
     public function setHours(string $hours): StoreLocatorInterface;
 
     /**
+     * @param int $status
+     * @return StoreLocatorInterface
+     */
+    public function setStatus(int $status):StoreLocatorInterface;
+
+    /**
+     * @return int
+     */
+    public function getStatus():int;
+
+    /**
      * @return string
      */
     public function getLatitude(): string;

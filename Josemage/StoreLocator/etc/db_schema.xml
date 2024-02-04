@@ -4,10 +4,11 @@
     <table name="store_locator_data" resource="default" engine="innodb" comment="Store Locator data">
         <column xsi:type="int" name="id" unsigned="false" nullable="false" identity="true"
                 comment="ID"/>
-        <column xsi:type="text" name="name" comment="Store name"/>
-        <column xsi:type="text" name="hours" comment="Store hours"/>
-        <column xsi:type="text" name="latitude" comment="Store Latitude"/>
-        <column xsi:type="text" name="longitude" comment="Store Longitude"/>
+        <column xsi:type="text" name="name" comment="Store name" nullable="true"/>
+        <column xsi:type="text" name="hours" comment="Store hours" nullable="true"/>
+        <column xsi:type="int" name="status" comment="Locator Status" nullable="true"/>
+        <column xsi:type="text" name="latitude" comment="Store Latitude" nullable="true"/>
+        <column xsi:type="text" name="longitude" comment="Store Longitude" nullable="true"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="id"/>
         </constraint>

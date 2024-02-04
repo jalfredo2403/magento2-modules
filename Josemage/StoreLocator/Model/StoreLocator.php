@@ -88,4 +88,22 @@ class StoreLocator extends AbstractModel implements StoreLocatorInterface
         $this->setData('longitude', $longitude);
         return $this;
     }
+
+    /**
+     * @return int
+     */
+    public function getStatus():int
+    {
+        return $this->getData('status');
+    }
+
+    /**
+     * @param int $status
+     * @return StoreLocatorInterface
+     */
+    public function setStatus(int $status):StoreLocatorInterface
+    {
+        $this->setData('status',$status);
+        return $this;
+    }
 }

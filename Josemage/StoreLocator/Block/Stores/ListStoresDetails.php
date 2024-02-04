@@ -94,12 +94,38 @@ class ListStoresDetails extends Template
         return null;
     }
 
-    public function getError():string
+
+    /**
+     * @return StoreLocatorInterface[]|null
+     *
+     */
+    public function laodStoresLocators(): ?array
     {
-        if(!$this->getData('error')){
+        /** @var  StoreLocatorInterface[] $locators */
+        $locators = [];
+        if ($this->config->isEnabled()) {
+            try {
+                $locators = $this->locatorData->collect();
+                if(!count($locators)){
+                    $this->setData('error', 'Please add one Store Locator');
+                    return null;
+                }
+            } catch (\Throwable $e) {
+                $this->setData('error', $e->getMessage());
+            }
+        }
+        return $locators;
+    }
+
+    /**
+     * @return string
+     */
+    public function getError(): string
+    {
+        if (!$this->getData('error')) {
             $this->setData('error', 'We are having trouble showing your locator, please try more later');
         }
         return $this->getData('error');
     }
- 
+
 }

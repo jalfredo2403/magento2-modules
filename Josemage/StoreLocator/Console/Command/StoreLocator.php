@@ -16,6 +16,7 @@ class StoreLocator extends Command
 
     const OPT_NAME_NAME = 'name';
     const OPT_NAME_HOURS = 'hours';
+    const OPT_NAME_STATUS = 'status';
     const OPT_NAME_LATITUDE = 'latitude';
     const OPT_NAME_LONGITUDE = 'longitude';
 
@@ -57,6 +58,11 @@ class StoreLocator extends Command
                 InputOption::VALUE_OPTIONAL,
                 'Store hours'
             )->addOption(
+                self::OPT_NAME_STATUS,
+                null,
+                InputOption::VALUE_OPTIONAL,
+                'Store Status'
+            )->addOption(
                 self::OPT_NAME_LATITUDE,
                 'lat',
                 InputOption::VALUE_OPTIONAL,
@@ -79,8 +85,10 @@ class StoreLocator extends Command
 
         $name = $input->getOption(self::OPT_NAME_NAME);
         $hours = $input->getOption(self::OPT_NAME_HOURS);
+        $status = (int)$input->getOption(self::OPT_NAME_STATUS) ?? 0;
         $latitude = $input->getOption(self::OPT_NAME_LATITUDE);
         $longitude = $input->getOption(self::OPT_NAME_LONGITUDE);
+
 
         /** @var  $locatorData */
         $locatorData = $this->locatorDataFactory->create();
@@ -91,6 +99,10 @@ class StoreLocator extends Command
 
         if ($hours) {
             $locatorData->setHours($hours);
+        }
+
+        if ($status) {
+            $locatorData->setStatus($status);
         }
 
         if ($latitude) {

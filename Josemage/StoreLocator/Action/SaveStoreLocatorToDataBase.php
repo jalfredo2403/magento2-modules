@@ -49,6 +49,10 @@ class SaveStoreLocatorToDataBase
             $storeLocator->setHours($hours);
         }
 
+        if ($status = $locatorData->getStatus()) {
+            $storeLocator->setStatus($status);
+        }
+
         if ($latitude = $locatorData->getLatitude()) {
             $storeLocator->setLatitude($latitude);
         }

@@ -22,5 +22,22 @@
 
     <preference for="Josemage\StoreLocator\Api\Data\StoreLocatorInterface" type="Josemage\StoreLocator\Model\StoreLocator"/>
     <preference for="Josemage\StoreLocator\Api\StoreLocatorRepositoryInterface" type="Josemage\StoreLocator\Model\StoreLocatorRepository"/>
+    <preference for="Josemage\StoreLocator\Api\Data\StoreLocatorSearchResultInterface" type="Josemage\StoreLocator\Model\StoreLocatorSearchResult"/>
+
+    <virtualType name="Josemage\StoreLocator\Virtual\Model\Api\SearchCriteria\DetailsCollectionProcessor"
+                 type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="filters" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor</item>
+                <item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>
+                <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Josemage\StoreLocator\Model\StoreLocatorRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">Josemage\StoreLocator\Virtual\Model\Api\SearchCriteria\DetailsCollectionProcessor</argument>
+        </arguments>
+    </type>
 
 </config>
