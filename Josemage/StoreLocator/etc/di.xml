@@ -3,8 +3,8 @@
     <type name="Magento\Framework\Console\CommandList">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="orderExportRun" xsi:type="object">Josemage\StoreLocator\Console\Command\StoreLocator</item>
-                <item name="orderExportDelete" xsi:type="object">Josemage\StoreLocator\Console\Command\StoreLocatorDelete</item>
+                <item name="storeLocatorAdd" xsi:type="object">Josemage\StoreLocator\Console\Command\StoreLocator</item>
+                <item name="storeLocatorDelete" xsi:type="object">Josemage\StoreLocator\Console\Command\StoreLocatorDelete</item>
             </argument>
         </arguments>
     </type>
