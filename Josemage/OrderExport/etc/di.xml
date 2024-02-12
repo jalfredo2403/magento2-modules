@@ -1,9 +1,11 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+
     <type name="Magento\Framework\Console\CommandList">
         <arguments>
             <argument name="commands" xsi:type="array">
                 <item name="orderExportRun" xsi:type="object">Josemage\OrderExport\Console\Command\OrderExport</item>
+                <item name="orderExportTest" xsi:type="object">Josemage\OrderExport\Console\Command\OrderExportTest</item>
             </argument>
         </arguments>
     </type>
@@ -43,7 +45,7 @@
     <preference for="Josemage\OrderExport\Api\OrderExportDetailsRepositoryInterface"
                 type="Josemage\OrderExport\Model\OrderExportDetailsRepository"/>
     <preference for="Josemage\OrderExport\Api\Data\OrderExportDetailsSearchResultsInterface"
-                type="Josemage\OrderExport\Model\OrderExportDetailsSearchResults"/>.
+                type="Josemage\OrderExport\Model\OrderExportDetailsSearchResults"/>
 
     <virtualType name="Josemage\OrderExport\Virtual\Model\Api\SearchCriteria\DetailsCollectionProcessor"
                  type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
@@ -59,6 +61,10 @@
         <arguments>
             <argument name="collectionProcessor" xsi:type="object">Josemage\OrderExport\Virtual\Model\Api\SearchCriteria\DetailsCollectionProcessor</argument>
         </arguments>
+    </type>
+
+    <type name="Magento\Sales\Api\OrderRepositoryInterface">
+        <plugin name="load_export_details_into_order" type="Josemage\OrderExport\Plugin\LoadExportDetailsIntoOrder" sortOrder="10" disabled="false"/>
     </type>
 
 </config>

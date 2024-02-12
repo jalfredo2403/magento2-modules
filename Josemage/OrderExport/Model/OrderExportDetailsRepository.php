@@ -103,7 +103,7 @@ class OrderExportDetailsRepository implements OrderExportDetailsRepositoryInterf
     public function delete(OrderExportDetailsInterface $exportDetails): bool
     {
         if (!($exportDetails instanceof AbstractModel)) {
-            throw new CouldNotSaveException(__('The implementation of OrderExportDetailsInterface has changed'));
+            throw new CouldNotDeleteException(__('The implementation of OrderExportDetailsInterface has changed'));
         }
 
         try {

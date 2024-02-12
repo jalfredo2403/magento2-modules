@@ -2,7 +2,7 @@
 
 namespace Josemage\OrderExport\Api;
 
-use Josemage\OrderExport\Api\Data\OrderExportDetailsInterface;
+use  Josemage\OrderExport\Api\Data\OrderExportDetailsInterface;
 use Josemage\OrderExport\Api\Data\OrderExportDetailsSearchResultsInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Exception\CouldNotDeleteException;
