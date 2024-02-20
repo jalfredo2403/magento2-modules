@@ -1,0 +1,14 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+
+    <type name="Magento\Checkout\Block\Onepage">
+        <arguments>
+            <argument name="layoutProcessors" xsi:type="array">
+                <item name="webServiceNotice" xsi:type="object">Josemage\StoreIntegration\Model\Layout\Checkout\IntegrationProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <preference for="Josemage\StoreIntegration\Api\IntegrationProcessResponseInterface" type="Josemage\StoreIntegration\Model\CheckoutNoticeFormatResponse"/>
+
+</config>

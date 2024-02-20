@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <store_integration>
+            <store_integration_note>
+                <enabled>1</enabled>
+                <api_url>http://34.29.205.82:8080/hello-world-bean</api_url>
+            </store_integration_note>
+        </store_integration>
+    </default>
+</config>
