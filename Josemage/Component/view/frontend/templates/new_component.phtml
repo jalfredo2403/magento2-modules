@@ -1,0 +1,22 @@
+<?php
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ */
+?>
+<div id="new-component" data-bind="scope: 'custom-component'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "#new-component": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "custom-component": {
+                        "component": "Josemage_Component/js/newViewModel",
+                        "template": "Josemage_Component/new-component-template"
+                    }
+                }
+            }
+        }
+    }
+</script>

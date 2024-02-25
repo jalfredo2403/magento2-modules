@@ -1,0 +1,18 @@
+{
+    "name": "Josemage/module-component",
+    "description": "",
+    "type": "magento2-module",
+    "require": {
+        "magento/framework": "^103",
+        "guzzlehttp/guzzle": "^7.4",
+        "swiftotter/module-fulfillment-block": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Josemage\\Component\\": ""
+        }
+    }
+}
