@@ -1,0 +1,25 @@
+<?php
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ */
+?>
+
+<div id="km-component" data-bind="scope: 'km-component-scope'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "#km-component": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "km-component-scope": {
+                        "component": "Josemage_Component/js/view/ob-component",
+                        "config": {
+                            "template": "Josemage_Component/observables-template"
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>

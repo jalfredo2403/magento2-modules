@@ -1,0 +1,10 @@
+<h1 data-bind="text: title"></h1>
+<p data-bind="html: content"></p>
+<input data-bind="attr: {
+    type: 'text',
+    placeholder: 'Modify the paragraph text',
+    id: 'custom_input'
+}, event: {
+    keyup: onChangeInput
+}"/>
+<p data-bind="attr: { id: 'counter' }, text: 'Input characters: ' + counter()"></p>
