@@ -2,9 +2,11 @@
 <p data-bind="html: content"></p>
 <input data-bind="attr: {
     type: 'text',
-    placeholder: 'Modify the paragraph text',
+    placeholder: 'Write here',
     id: 'custom_input'
 }, event: {
     keyup: onChangeInput
 }"/>
-<p data-bind="attr: { id: 'counter' }, text: 'Input characters: ' + counter()"></p>
+<!-- ko foreach: getRegion('count-integer-component') -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!--/ko-->

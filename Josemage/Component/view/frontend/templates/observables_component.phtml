@@ -4,18 +4,27 @@
  */
 ?>
 
-<div id="km-component" data-bind="scope: 'km-component-scope'">
+<div id="ja-component" data-bind="scope: 'ja-component-scope'">
     <!-- ko template: getTemplate() --><!-- /ko -->
 </div>
 <script type="text/x-magento-init">
     {
-        "#km-component": {
+        "#ja-component": {
             "Magento_Ui/js/core/app": {
                 "components": {
-                    "km-component-scope": {
+                    "ja-component-scope": {
                         "component": "Josemage_Component/js/view/ob-component",
                         "config": {
                             "template": "Josemage_Component/observables-template"
+                        },
+                        "children": {
+                            "count-integer-component": {
+                                "component": "Josemage_Component/js/view/integer-component",
+                                "config": {
+                                    "template": "Josemage_Component/integer-template"
+                                },
+                                "displayArea": "count-integer-component"
+                            }
                         }
                     }
                 }
