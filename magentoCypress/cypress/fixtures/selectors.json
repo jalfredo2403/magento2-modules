@@ -1,0 +1,10 @@
+{
+    "mainInfo": ".info",
+    "mainTitle": ".title",
+    "productCard": ".product-items.widget-product-grid .product-item",
+    "selectorComponentTitle": "#ja-component > h1",
+    "selectorComponentContent": "#ja-component-content",
+    "selectorComponentInput": "#custom_input",
+    "selectorCountInteger": "#integerCount"
+}
+  
