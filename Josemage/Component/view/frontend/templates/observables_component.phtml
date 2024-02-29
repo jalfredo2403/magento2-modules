@@ -1,0 +1,34 @@
+<?php
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ */
+?>
+
+<div id="ja-component" data-bind="scope: 'ja-component-scope'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "#ja-component": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "ja-component-scope": {
+                        "component": "Josemage_Component/js/view/ob-component",
+                        "config": {
+                            "template": "Josemage_Component/observables-template"
+                        },
+                        "children": {
+                            "count-integer-component": {
+                                "component": "Josemage_Component/js/view/integer-component",
+                                "config": {
+                                    "template": "Josemage_Component/integer-template"
+                                },
+                                "displayArea": "count-integer-component"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>

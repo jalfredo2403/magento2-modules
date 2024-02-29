@@ -1,0 +1,12 @@
+<h1 data-bind="text: title"></h1>
+<p data-bind="html: content"></p>
+<input data-bind="attr: {
+    type: 'text',
+    placeholder: 'Write here',
+    id: 'custom_input'
+}, event: {
+    keyup: onChangeInput
+}"/>
+<!-- ko foreach: getRegion('count-integer-component') -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!--/ko-->
