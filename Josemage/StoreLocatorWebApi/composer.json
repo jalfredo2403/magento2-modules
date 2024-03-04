@@ -1,0 +1,17 @@
+{
+    "name": "Josemage/module-storelocatorwebapi",
+    "description": "",
+    "type": "magento2-module",
+    "require": {
+        "magento/framework": "^103",
+        "Josemage/module-storelocator": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Josemage\\module-storelocatorwebapi\\": ""
+        }
+    }
+}
