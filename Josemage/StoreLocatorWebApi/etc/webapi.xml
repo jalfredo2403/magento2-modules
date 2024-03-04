@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/josemage-store-locator/page/:locatorId" method="GET">
+        <service class="Josemage\StoreLocator\Api\StoreLocatorRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="Josemage_StoreLocator::StoreLocator"/>
+        </resources>
+    </route>
+</routes>
